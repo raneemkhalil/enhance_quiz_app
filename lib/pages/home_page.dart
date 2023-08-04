@@ -21,8 +21,12 @@ class _MyHomePageState extends State<MyHomePage> {
     2: 2,
   }; 
 
-  List <List> icons = [
-    [const Icon(Icons.sports_soccer), const Icon(Icons.sports_tennis), const Icon(Icons.sports_basketball)],
+  List <List> whiteIcons = [
+    [
+      const Icon(Icons.sports_soccer, color: Colors.white,), 
+      const Icon(Icons.sports_tennis, color: Colors.white,), 
+      const Icon(Icons.sports_basketball, color: Colors.white,)
+    ],
     [
       Container(width: 20, decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.red,),),
       Container(width: 20, decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.blue,),),
@@ -30,9 +34,28 @@ class _MyHomePageState extends State<MyHomePage> {
     ],
 
     [
-      const Image(image: AssetImage('assets/icons/apple.png'),),
-      const Image(image: AssetImage('assets/icons/banana.png'),), 
-      const Image(image: AssetImage('assets/icons/mango.png'),)
+      const Image(image: AssetImage('assets/icons/apple.png'), color: Colors.white,),
+      const Image(image: AssetImage('assets/icons/banana.png'), color: Colors.white,), 
+      const Image(image: AssetImage('assets/icons/mango.png'), color: Colors.white,)
+    ]
+  ];
+
+  List <List> blackIcons = [
+    [
+      const Icon(Icons.sports_soccer, color: Colors.black,), 
+      const Icon(Icons.sports_tennis, color: Colors.black,), 
+      const Icon(Icons.sports_basketball, color: Colors.black,)
+    ],
+    [
+      Container(width: 20, decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.red,),),
+      Container(width: 20, decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.blue,),),
+      Container(width: 20, decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.yellow,),)
+    ],
+
+    [
+      const Image(image: AssetImage('assets/icons/apple.png'), color: Colors.black,),
+      const Image(image: AssetImage('assets/icons/banana.png'), color: Colors.black,), 
+      const Image(image: AssetImage('assets/icons/mango.png'), color: Colors.black,)
     ]
   ];
 
@@ -195,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.all(15.0),
                       child: Row(
                         children: [
-                          icons[_index][i],
+                          i == _selectedIndex ? whiteIcons[_index][i] : blackIcons[_index][i],
                           const SizedBox(width: 10,),
                           Text(
                             questionsWithAnswers[_index]['answers'][i],
