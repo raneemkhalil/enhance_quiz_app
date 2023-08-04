@@ -74,26 +74,28 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       if(_index < questionsWithAnswers.length - 1){
         _index++;
-        if(_selectedIndex == -1){
-          _index--;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 20,
-               left: MediaQuery.of(context).size.width / 20,
-               right: MediaQuery.of(context).size.width / 20
-              ),
-              behavior: SnackBarBehavior.floating,
-              content: const Text('Please select an answer!'),
-            )
-          );
-        }
-        else{
-          _selectedIndex = -1;
-        }
       }
       else{
         _result = !_result;
       }
+      if(_result && _selectedIndex == -1){
+        _index++;
+        _result = !_result;
+      }
+      if(_selectedIndex == -1){
+        _index--;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 20,
+              left: MediaQuery.of(context).size.width / 20,
+              right: MediaQuery.of(context).size.width / 20
+            ),
+            behavior: SnackBarBehavior.floating,
+            content: const Text('Please select an answer!'),
+          )
+        );
+      }
+      _selectedIndex = -1;
     });
   }
 
@@ -145,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 children: [
                   Text(
-                    'Q. $_index',
+                    'Q. ${_index + 1}',
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
