@@ -95,6 +95,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementIndex() {
     setState(() {
+      if(macthing[_index] == _selectedIndex){
+        _correctAnswers++;
+      }
       if(_index < questionsWithAnswers.length - 1){
         _index++;
       }
@@ -125,9 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void _select(int index){
     setState(() {
       _selectedIndex = index;
-      if(macthing[_index] == _selectedIndex){
-        _correctAnswers++;
-      }
     });
   }
 
